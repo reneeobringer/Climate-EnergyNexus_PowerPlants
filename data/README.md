@@ -1,4 +1,4 @@
-There are two folders with data: `EIAdata` has the generation files from the US Energy Information Administration and `NARRdata` has the climate data files from the North American Regional Reanalysis. There are also two post-processed files: `allplantdata.csv` which has the power plant data and `allnarrdata.zip` which is a compressed folder with the combined NARR data file for every power plant and variable. These post-processed files were generated using `figurecode.R` and then used in creating the figures later in that same script. Below the variables are listed for each post-processed file. 
+There are two folders with data: `EIAdata` has the generation files from the US Energy Information Administration and `NARRdata` has the climate data files from the North American Regional Reanalysis. There are also two post-processed files: `allplantdata.csv` which has the power plant data and `allnarrdata.csv` which is has NARR data file for every power plant and variable. These post-processed files were generated using `figurecode.R` and then used in creating the figures later in that same script. Below the variables are listed for each post-processed file. 
 
 Variables in `allplantdata.csv`:
 
@@ -12,7 +12,7 @@ Variables in `allplantdata.csv`:
 * `lon` - longitude of the plant (degrees E)
 * `State` - postal code of the state that each power plant is located in
 
-Variables in `allnarrdata.csv` (compressed in `allnarrdata.zip`): 
+Variables in `allnarrdata.csv`: 
 
 * `plant_code` - EIA-assigned plant code
 * `month` - month (1-12)
