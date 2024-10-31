@@ -4,7 +4,7 @@ Code and data for working with renewable energy generation and climate data at t
 
 Two categories of data were collected: renewable energy generation data and climate data. The renewable energy generation data (folder: `data/EIAdata`) includes energy generation data for geothermal, hydroelectric, solar, and wind power obtained from the US Energy Information Administration. The climate data (folder: `data/NARRdata`) were obtained from the North American Regional Reanalysis. All data were collected between 2023 and 2024.
 
-We conducted some post-processing and created figures using R version 4.1.2. This file (`figurecode.R`) was last run on 25 September 2024. In order to run the R code, the following R packages are required, with the version we used in parentheses: 
+We conducted some post-processing and created figures using R version 4.1.2. This file (`figurecode.R`) was last run on 31 October 2024. In order to run the R code, the following R packages are required, with the version we used in parentheses: 
 
 *  cowplot (v1.1.1)
 *  dplyr (v1.0.10)
