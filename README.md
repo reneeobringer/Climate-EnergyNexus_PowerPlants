@@ -2,6 +2,8 @@
 
 Code and data for working with renewable energy generation and climate data at the power plant-level. The results from the analysis are currently under review. 
 
+A permanent version of this repository can be found here: [![DOI](https://zenodo.org/badge/866153008.svg)](https://doi.org/10.5281/zenodo.14019100)
+
 Two categories of data were collected: renewable energy generation data and climate data. The renewable energy generation data (folder: `data/EIAdata`) includes energy generation data for geothermal, hydroelectric, solar, and wind power obtained from the US Energy Information Administration. The climate data (folder: `data/NARRdata`) were obtained from the North American Regional Reanalysis. All data were collected between 2023 and 2024.
 
 We conducted some post-processing and created figures using R version 4.1.2. This file (`figurecode.R`) was last run on 31 October 2024. In order to run the R code, the following R packages are required, with the version we used in parentheses: 
