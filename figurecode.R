@@ -1,6 +1,6 @@
 # Purpose: Figures for Energy-Climate Data Paper
 # Author: Renee Obringer
-# Run On: 25 September 2024
+# Run On: 31 October 2024
 
 rm(list=ls())
 options(scipen = 999)
@@ -25,26 +25,25 @@ datadir2 <- paste(maindir, '/data/EIAdata', sep = '')
 ########## LOAD DATA #################
 
 # NARR data
-convectprecipdata <- read_excel(paste(datadir1, '/acpcp.agg.2011.2022.xlsx', sep = ''))  # convective precipitation accumulation (kg/m^2)
-temppdata <- read_excel(paste(datadir1, '/air.agg.2011.2022.xlsx', sep = ''))            # air temperature (K)
-albedodata <- read_excel(paste(datadir1, '/albedo.agg.2011.2022.xlsx', sep = ''))        # albedo (%)
-precipdata <- read_excel(paste(datadir1, '/apcp.agg.2011.2022.xlsx', sep = ''))          # precipitation amount (kg/m^2)
-dewpointdata <- read_excel(paste(datadir1, '/dpt.agg.2011.2022.xlsx', sep = ''))         # dew point temperature (K)
-pottempdata <- read_excel(paste(datadir1, '/pottmp.agg.2011.2022.xlsx', sep = ''))       # potential temperature (K)
-rhdata <- read_excel(paste(datadir1, '/rhum.agg.2011.2022.xlsx', sep = ''))              # relative humidity (%)
-cloudcoverdata <- read_excel(paste(datadir1, '/tcdc.agg.2011.2022.xlsx', sep = ''))      # total cloud cover (%)
-uwinddata <- read_excel(paste(datadir1, '/uwnd.agg.2011.2022.xlsx', sep = ''))           # u-component of wind (m/s)
-vwinddata <- read_excel(paste(datadir1, '/vwnd.agg.2011.2022.xlsx', sep = ''))           # v-component of wind (m/s)
+convectprecipdata <- read.csv(paste(datadir1, '/acpcp.agg.2011.2022.csv', sep = ''))  # convective precipitation accumulation (kg/m^2)
+temppdata <- read.csv(paste(datadir1, '/air.agg.2011.2022.csv', sep = ''))            # air temperature (K)
+albedodata <- read.csv(paste(datadir1, '/albedo.agg.2011.2022.csv', sep = ''))        # albedo (%)
+precipdata <- read.csv(paste(datadir1, '/apcp.agg.2011.2022.csv', sep = ''))          # precipitation amount (kg/m^2)
+dewpointdata <- read.csv(paste(datadir1, '/dpt.agg.2011.2022.csv', sep = ''))         # dew point temperature (K)
+pottempdata <- read.csv(paste(datadir1, '/pottmp.agg.2011.2022.csv', sep = ''))       # potential temperature (K)
+rhdata <- read.csv(paste(datadir1, '/rhum.agg.2011.2022.csv', sep = ''))              # relative humidity (%)
+cloudcoverdata <- read.csv(paste(datadir1, '/tcdc.agg.2011.2022.csv', sep = ''))      # total cloud cover (%)
+winddata <- read.csv(paste(datadir1, '/wnd.agg.2011.2022.csv', sep = ''))             # wind speed (m/s)
 
 # EIA data
-plantdata <- read_excel(paste(datadir2, '/eia_master_df.xlsx', sep = ''))
+plantdata <- read_excel(paste(datadir2, '/eia_combined.xlsx', sep = ''))
 latlondata <- read_excel(paste(maindir, '/miscellaneousfiles/REF_LAT_LON.xlsx', sep = ''))
 statedata <- read_excel(paste(maindir, '/miscellaneousfiles/state_plantIDs.xlsx', sep = ''))
 
 ########## ORGANIZE DATA ############
 
 # merge all NARR dataframes
-datasets <- list(convectprecipdata, temppdata, albedodata, precipdata, dewpointdata, pottempdata, rhdata, cloudcoverdata, uwinddata, vwinddata)
+datasets <- list(convectprecipdata, temppdata, albedodata, precipdata, dewpointdata, pottempdata, rhdata, cloudcoverdata, winddata)
 narrdata <- purrr::reduce(.x = datasets, merge, by = c('plant_code', 'year', 'month'), all = T)
 
 # write to csv
