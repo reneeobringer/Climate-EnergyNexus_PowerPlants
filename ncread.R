@@ -4,26 +4,33 @@
 
 rm(list=ls())
 
+library(readxl)
 library(ncdf4)
 library(CFtime)
 
-setwd('/Users/rqo5125/Library/Mobile Documents/com~apple~CloudDocs/Documents/Research/data/NARR/rawnetcdffiles/windspeed')
+# Set the directory with NetCDF files downloaded from NARR
+netcdfdir <- '    '
+
+# Set the path to the cloned github repository
+path <- '    ' 
 
 # get list of file names
+setwd(netcdfdir)
 filenames <- list.files(pattern="*.nc", full.names=F)
 
 # lat/lon pairs
-all_locations <- list(c(36.1435, -114.4144))
+all_locations <- read_excel(paste(path, '/miscellaneousfiles/REF_LAT_LON.xlsx', sep = ''))
 
-# create list of new csv file names
-newfilenames <- c('vwind_narr.csv')
+# create new csv file name
+newfilename <- 'vwnd.daily.2011.2022.csv'
                   
-for (l in 1:length(all_locations)) {
+for (l in 1:nrow(all_locations)) {
   # initialize variables
   variable <- data.frame(Date = as.Date(character()), vwind_mPs = numeric())
-  location <- all_locations[[l]]
+  location <- all_locations[l,2:3]
   
-  for (i in 37:57) {
+  # loop through each year of interest **change i count based indices in "filenames"**
+  for (i in 63:length(filenames)) {
     # upload netcdf file
     ncin <- nc_open(filenames[i])
     #print(ncin)
